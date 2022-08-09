@@ -1,4 +1,4 @@
-use practise;
+use practise;///////////////////////////////////////////////////
 create table customer(customerid int(10)primary key not null auto_increment, firstname varchar(30), 
 lastname varchar(40), city varchar (30));
 insert into customer(firstname,lastname,city)values("Ajay","golande","pune");
