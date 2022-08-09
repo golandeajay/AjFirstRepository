@@ -1,0 +1,32 @@
+use practise;
+create table customer(customerid int(10)primary key not null auto_increment, firstname varchar(30), 
+lastname varchar(40), city varchar (30));
+insert into customer(firstname,lastname,city)values("Ajay","golande","pune");
+insert into customer(firstname,lastname,city)values("amit","dorad","mumbai");
+insert into customer(firstname,lastname,city)values("suraj","rathod","shirur");
+insert into customer(firstname,lastname,city)values("akshay","kashid","indore");
+
+use practise;
+create table account(customerid int  , accountid int(10)primary key not null auto_increment ,accounttype varchar (40),
+balance int (50), foreign key(customerid) references customer(customerid));
+insert into account(accounttype,balance)values("saving",20000);
+insert into account(accounttype,balance)values("current",50000);
+update account set customerid=1 where accountid=1;
+update account set customerid=2 where accountid=2;
+
+select customer.customerid,firstname,lastname,city, accountid,accounttype ,balance from customer
+inner join account on customer.customerid=account.customerid;
+
+select customer.firstname,lastname,balance from customer 
+inner join account on customer.customerid=account.customerid;
+
+select customer.customerid,firstname,city,balance from customer 
+left join account on customer.customerid=account.customerid;
+
+select customer.customerid,firstname,lastname,city, accounttype,balance from customer 
+right join account on customer.customerid=account.customerid;
+
+select * from customer left join account on customer.customerid=account.customerid
+union
+select* from customer right outer join account on customer.customerid=account.customerid;
+
